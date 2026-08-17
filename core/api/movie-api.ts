@@ -1,9 +1,9 @@
 import axios from "axios";
 
 export const movieApi = axios.create({
-  baseURL: "https://api.themoviedb.org/3/movie",
+  baseURL: process.env.EXPO_PUBLIC_MOVIE_DB_URL,
   params: {
     language: "es-MX",
-    api_key: "cbbfb48f0ec7d7ee50850a22a3b024fc",
+    api_key: process.env.EXPO_PUBLIC_MOVIE_DB_KEY,
   },
 });

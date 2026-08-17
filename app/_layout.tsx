@@ -8,6 +8,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import { Stack } from 'expo-router';
 
 const queryClient = new QueryClient()
 
@@ -17,9 +18,10 @@ const RootLayout = () => {
   nowPlayingAction();
   return (
     <QueryClientProvider client={queryClient}>
-      <View>
-        <Text className='text-3xl'>RootLayout</Text>
-      </View>
+      <Stack
+        screenOptions={{
+          headerShown: false,
+        }} />
     </QueryClientProvider>
 
   )
