@@ -16,20 +16,21 @@ export interface Result {
   backdrop_path: string;
   genre_ids: number[];
   id: number;
-  title: string;
   original_language: OriginalLanguage;
   original_title: string;
   overview: string;
   popularity: number;
   poster_path: string;
   release_date: Date;
-  softcore: boolean;
+  title: string;
   video: boolean;
   vote_average: number;
   vote_count: number;
 }
 
 export enum OriginalLanguage {
+  CN = "cn",
   En = "en",
-  Ko = "ko",
+  Hi = "hi",
+  Zh = "zh",
 }

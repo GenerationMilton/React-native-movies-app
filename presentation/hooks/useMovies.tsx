@@ -1,47 +1,40 @@
-import { nowPlayingAction } from "@/core/actions/movies/now-playing.action"
-import { popularMoviesAction } from "@/core/actions/movies/popular.action"
-import { topRatedMoviesAction } from "@/core/actions/movies/top-rated.action"
-import { upcomingMoviesAction } from "@/core/actions/movies/upcoming.action copy"
-import { useQuery } from "@tanstack/react-query"
+import { nowPlayingAction } from '@/core/actions/movies/now-playing.action';
+import { popularMoviesAction } from '@/core/actions/movies/popular.action';
+import { topRatedMoviesAction } from '@/core/actions/movies/top-rated.action';
+import { upcomingMoviesAction } from '@/core/actions/movies/upcoming.action copy';
 
+import { useQuery } from '@tanstack/react-query';
 
 export const useMovies = () => {
-
-
-    //Queries
+    // Queries
     const nowPlayingQuery = useQuery({
         queryKey: ['movies', 'nowPlaying'],
-        queryFn: () => nowPlayingAction(),
-        staleTime: 1000 * 60 * 60 * 24 // 24 horas
-    })
+        queryFn: nowPlayingAction,
+        staleTime: 1000 * 60 * 60 * 24, // 24horas
+    });
 
-    //Queries
     const popularQuery = useQuery({
         queryKey: ['movies', 'popular'],
-        queryFn: () => popularMoviesAction(),
-        staleTime: 1000 * 60 * 60 * 24 // 24 horas
-    })
+        queryFn: popularMoviesAction,
+        staleTime: 1000 * 60 * 60 * 24, // 24horas
+    });
 
-    //Queries
     const topRatedQuery = useQuery({
         queryKey: ['movies', 'top-rated'],
-        queryFn: () => topRatedMoviesAction(),
-        staleTime: 1000 * 60 * 60 * 24 // 24 horas
-    })
+        queryFn: topRatedMoviesAction,
+        staleTime: 1000 * 60 * 60 * 24, // 24horas
+    });
 
-    //Queries
     const upcomingQuery = useQuery({
         queryKey: ['movies', 'upcoming'],
-        queryFn: () => upcomingMoviesAction(),
-        staleTime: 1000 * 60 * 60 * 24 // 24 horas
-    })
-
+        queryFn: upcomingMoviesAction,
+        staleTime: 1000 * 60 * 60 * 24, // 24horas
+    });
 
     return {
         nowPlayingQuery,
         popularQuery,
         topRatedQuery,
         upcomingQuery,
-    }
-
-}
+    };
+};
