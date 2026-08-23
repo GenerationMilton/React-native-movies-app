@@ -1,19 +1,30 @@
-import { View, Text } from 'react-native'
+import { View, Text, ActivityIndicator } from 'react-native'
 import React from 'react'
 import { useLocalSearchParams } from 'expo-router'
-import { getMovieByIdAction } from '@/core/movie/get-movie-by-id.action';
+import { useMovie } from '@/presentation/hooks/useMovie';
+import { ScrollView } from 'react-native-gesture-handler';
+
 
 const MovieScreen = () => {
 
     const { id } = useLocalSearchParams();
-    getMovieByIdAction(+id);
 
+    const { movieQuery } = useMovie(+id);
+
+    if (movieQuery.isLoading) {
+        return (
+            <View className='flex flex-1 justify-center items-center'>
+                <Text className='mb-4'>Espere por favor</Text>
+                <ActivityIndicator color="purple" size={30} />
+            </View>
+        )
+    }
 
 
     return (
-        <View>
-            <Text>MovieScreen</Text>
-        </View>
+        <ScrollView>
+            <Text>{movieQuery.data?.title ?? 'No tiene'}</Text>
+        </ScrollView>
     )
 }
 
