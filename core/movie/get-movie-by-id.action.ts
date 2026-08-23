@@ -1,15 +1,15 @@
-import { MovieDBMoviesResponse } from "@/infrastructure/interfaces/moviedb-response";
 import { MovieMapper } from "@/infrastructure/mappers/movie.mapper";
 import { movieApi } from "../api/movie-api";
+import { MovieDBMovieResponse } from "@/infrastructure/interfaces/moviedb-movie.response";
+import { CompleteMovie } from "@/infrastructure/interfaces/movie.interface";
 
-export const getMovieByIdAction = async (id: number | string) => {
+export const getMovieByIdAction = async (
+  id: number | string,
+): Promise<CompleteMovie> => {
   try {
-    const { data } = await movieApi.get<MovieDBMoviesResponse>(`/${id}`);
+    const { data } = await movieApi.get<MovieDBMovieResponse>(`/${id}`);
 
-    // console.log(JSON.stringify(data, null, 2));
-    console.log(data);
-
-    return data;
+    return MovieMapper.fromTheMovieDBToCompleteMovie(data);
   } catch (error) {
     console.log(error);
     throw "Cannot load now playing movies";
