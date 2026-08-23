@@ -3,6 +3,7 @@ import React from 'react'
 import { useLocalSearchParams } from 'expo-router'
 import { useMovie } from '@/presentation/hooks/useMovie';
 import { ScrollView } from 'react-native-gesture-handler';
+import MovieHeader from '@/presentation/components/movie/MovieHeader';
 
 
 const MovieScreen = () => {
@@ -11,7 +12,7 @@ const MovieScreen = () => {
 
     const { movieQuery } = useMovie(+id);
 
-    if (movieQuery.isLoading) {
+    if (movieQuery.isLoading || !movieQuery.data) {
         return (
             <View className='flex flex-1 justify-center items-center'>
                 <Text className='mb-4'>Espere por favor</Text>
@@ -23,7 +24,11 @@ const MovieScreen = () => {
 
     return (
         <ScrollView>
-            <Text>{movieQuery.data?.title ?? 'No tiene'}</Text>
+            <MovieHeader
+                originalTitle={movieQuery.data.originalTitle}
+                poster={movieQuery.data.poster}
+                title={movieQuery.data.title}
+            />
         </ScrollView>
     )
 }
