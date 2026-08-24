@@ -1,5 +1,4 @@
-import { MovieMapper } from "@/infrastructure/mappers/movie.mapper";
-import { movieApi } from "../api/movie-api";
+import { movieApi } from "@/core/api/movie-api";
 import { MovieDBCreditsResponse } from "@/infrastructure/interfaces/moviedb-credits.response";
 import { CastMapper } from "@/infrastructure/mappers/cast.mapper";
 

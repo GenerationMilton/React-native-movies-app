@@ -12,13 +12,9 @@ interface Props {
 
 const MoviePoster = ({ id, poster, smallPoster = false, className }: Props) => {
     return (
-        <Pressable 
+        <Pressable
             className={`active:opacity-90 px-2 ${MoviePoster}`}
-            onPress={() => router.push({
-                pathname: '/movie[id]',
-                params: { id: String(id) },
-            })}
-
+            onPress={() => router.push(`/movie/${id}`)}
         >
             <Image
                 source={{ uri: poster }}

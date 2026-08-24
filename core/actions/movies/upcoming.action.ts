@@ -12,6 +12,6 @@ export const upcomingMoviesAction = async () => {
     return movies;
   } catch (error) {
     console.log(error);
-    throw "Cannot load upcoming movies";
+    throw "Cannot load top_rated movies";
   }
 };

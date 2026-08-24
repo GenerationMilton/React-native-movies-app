@@ -1,7 +1,8 @@
-import { MovieMapper } from "@/infrastructure/mappers/movie.mapper";
-import { movieApi } from "../api/movie-api";
-import { MovieDBMovieResponse } from "@/infrastructure/interfaces/moviedb-movie.response";
+import { movieApi } from "@/core/api/movie-api";
 import { CompleteMovie } from "@/infrastructure/interfaces/movie.interface";
+import { MovieDBMovieResponse } from "@/infrastructure/interfaces/moviedb-movie.response";
+import { MovieDBMoviesResponse } from "@/infrastructure/interfaces/moviedb-response";
+import { MovieMapper } from "@/infrastructure/mappers/movie.mapper";
 
 export const getMovieByIdAction = async (
   id: number | string,
@@ -9,7 +10,7 @@ export const getMovieByIdAction = async (
   try {
     const { data } = await movieApi.get<MovieDBMovieResponse>(`/${id}`);
 
-    console.log("Pelicula - HTTP cargada");
+    console.log("Película - HTTP cargada");
 
     return MovieMapper.fromTheMovieDBToCompleteMovie(data);
   } catch (error) {
