@@ -1,13 +1,11 @@
-import { Cast } from "@/infrastructure/interfaces/cast";
-import { Image, Text, View } from "react-native";
-
+import { Image, Text, View } from 'react-native';
+import { Cast } from '@/infrastructure/interfaces/cast';
 
 interface Props {
     actor: Cast;
 }
 
 export const ActorCard = ({ actor }: Props) => {
-
     return (
         <View className="mx-10 w-[60px]">
             <Image
@@ -15,6 +13,7 @@ export const ActorCard = ({ actor }: Props) => {
                 className="w-[100px] h-[150] rounded-2xl shadow"
                 resizeMode="cover"
             />
+
             <View>
                 <Text
                     numberOfLines={2}

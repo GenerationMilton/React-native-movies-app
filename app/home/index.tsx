@@ -53,11 +53,6 @@ const HomeScreen = () => {
                     movies={upcomingQuery.data ?? []}
                     className="mb-5"
                 />
-
-                <MovieHorizontalList
-                    movies={upcomingQuery.data ?? []}
-                    className="mb-5"
-                />
             </View>
         </ScrollView>
     );
